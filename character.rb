@@ -1,10 +1,7 @@
 # frozen_string_literal: false
 
-require_relative 'dice'
-
 # A Traveller character
 class Character
-  include Dice
   attr_reader :name, :age, :career, :stats, :skills, :inventory
 
   def initialize(args)
