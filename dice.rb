@@ -17,4 +17,8 @@ module Dice
   def self.throw(target)
     sum <= target
   end
+
+  def self.roll_stats(quantity = 6)
+    Array.new(quantity) { sum }
+  end
 end
