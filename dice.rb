@@ -10,12 +10,12 @@ module Dice
     roll.reduce(0) { |sum, die| sum + die }
   end
 
-  def self.check(target)
-    sum >= target
+  def self.check(target, mod = 0)
+    sum + mod >= target
   end
 
-  def self.throw(target)
-    sum <= target
+  def self.throw(target, mod = 0)
+    sum + mod <= target
   end
 
   def self.roll_stats(quantity = 6)
