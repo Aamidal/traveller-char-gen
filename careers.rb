@@ -13,6 +13,12 @@ module Careers
        'high psg', '+2 SOC'],
       [1000, 5000, 5000, 10000, 20000, 50000, 50000]
     ]
+    skills: [
+      ['+1 STR,' '+1 DEX', '+1 END', '+1 SOC', '+1 INT', '+1 EDU'],
+      ["Ship's Boat", 'Vacc Suit', 'Fwd Obsv', 'Blade Cbt', 'Gun Cbt', 'Gunnery'],
+      ['Vacc Suit', 'Mechanical', 'Electronic', 'Engineering', 'Gunnery', 'J-o-t'],
+      ['Medical', 'Navigation', 'Engineering', 'Computer', 'Pilot', 'Admin'],
+    ]
   }
 
   MARINES = {
@@ -27,6 +33,12 @@ module Careers
       ['low psg', '+2 INT', '+1 EDU', 'blade', 'travellers',
        'high psg', '+2 SOC'],
       [2000, 5000, 5000, 10000, 20000, 30000, 40000]
+    ]
+    skills: [
+      ['+1 STR,' '+1 DEX', '+1 END', 'Gambling', 'Brawling', 'Blade Cbt'],
+      ['ATV', 'Vacc Suit', 'Blade Cbt', 'Blade Cbt', 'Gun Cbt', 'Gun Cbt'],
+      ['ATV', 'Mechanical', 'Electronic', 'Tactics', 'Blade Cbt', 'Gun Cbt'],
+      ['Medical','Tactics', 'Tactics', 'Computer', 'Leader', 'Admin']
     ]
   }
 
@@ -43,6 +55,12 @@ module Careers
        'mid psg', '+1 SOC'],
       [2000, 5000, 10000, 10000, 10000, 20000, 30000]
     ]
+    skills: [
+      ['+1 STR,' '+1 DEX', '+1 END', 'Gambling', 'Brawling', '+1 EDU']
+      ['ATV', 'Air/Raft', 'Fwd Obsv', 'Blade Cbt', 'Gun Cbt', 'Gun Cbt'],
+      ['ATV', 'Mechanical', 'Electronic', 'Tactics', 'Blade Cbt', 'Gun Cbt'],
+      ['Medical', 'Tactics', 'Tactics', 'Computer', 'Leader', 'Admin']
+    ]
   }
 
   SCOUTS = {
@@ -53,6 +71,12 @@ module Careers
       ['low psg', '+2 INT', '+2 EDU', 'blade', 'gun',
        'scout ship'],
       [20000, 20000, 30000, 30000, 50000, 50000, 50000]
+    ]
+    skills: [
+      ['+1 STR,' '+1 DEX', '+1 END', 'Gun Cbt', '+1 INT', '+1 EDU'],
+      ['Air/Raft', 'Vacc Suit', 'Navigation', 'Mechanical', 'Electronic', 'J-o-T'],
+      ['Air/Raft', 'Mechanical', 'Electronic', 'J-o-T', 'Gunnery', 'Medical'],
+      ['Medical', 'Navigation', 'Engineering', 'Computer', 'Pilot', 'J-o-T']
     ]
   }
 
@@ -69,6 +93,12 @@ module Careers
        'low psg', 'merchant ship'],
       [1000, 5000, 10000, 20000, 20000, 40000, 40000]
     ]
+    skills: [
+      ['+1 STR,' '+1 DEX', '+1 END', '+1 STR', 'Blade Cbt', 'Bribery'],
+      ['Steward', 'Vacc Suit', '+1 STR', 'Gun Cbt', 'Electronic', 'J-o-T'],
+      ['Streetwise', 'Mechanical', 'Electronic', 'Navigation', 'Gunnery', 'Medical'],
+      ['Medical', 'Navigation', 'Engineering', 'Computer', 'Pilot', 'Admin']
+    ]
   }
 
   OTHER = {
@@ -78,6 +108,12 @@ module Careers
     muster: [
       ['low psg', '+1 INT', '+1 EDU', 'gun', 'high psg'],
       [1000, 5000, 10000, 10000, 10000, 50000, 100000]
+    ]
+    skills: [
+      ['+1 STR', '+1 DEX', '+1 END', 'Blade Cbt', 'Brawling', '-1 SOC'],
+      ['Forgery', 'Gambling', 'Brawling', 'Blade Cbt', 'Gun Cbt', 'Bribery'],
+      ['Streetwise', 'Mechanical', 'Electronic', 'Gambling', 'Brawling', 'Forgery']
+      ['Medical', 'Forgery', 'Electronics', 'Computer', 'Streetwise', 'J-o-T']
     ]
   }
 
