@@ -18,7 +18,11 @@ module Dice
     sum + mod <= target
   end
 
-  def self.roll_stats(quantity = 6)
+  def self.multiroll(quantity = 6)
     Array.new(quantity) { sum }
+  end
+
+  def self.to_hex(stat_array)
+    stat_array.map { |num| num.to_s(16).upcase }.join('')
   end
 end
