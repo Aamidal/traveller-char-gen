@@ -1,67 +1,101 @@
-# frozen-string-literal: true
+# frozen-string-literal: false
+
 require_relative 'dice'
+require_relative 'careers'
 
-class CharGenerator
+# Randomly Generates a Traveller Character
+class CharGen
   include Dice
+  include Careers
 
-  attr_reader :stats, :age, :career, :term_constraints, :verbose
+  attr_reader :number, :service, :min_terms, :max_terms, :characters
 
   def initialize(args)
     args = defaults.merge(args)
-    
-    @term_constraints = [args[:min_terms], args[:max_terms]]
-    @verbose: args[:verbose]
+    @number = args[:number]
+    @service = args[:service]
+    @min_terms = args[:min_terms]
+    @max_terms = args[:max_terms]
+    @characters = []
+    run_chargen
   end
 
   def defaults
-    { min_terms: -1,
-      max_terms: Float::INFINITY,
-      verbose: false,
-    }
+    { number: 1,
+      service: false,
+      min_terms: -1,
+      max_terms: Float::INFINITY }
   end
 
-  def random_service
-    ['Navy', 'Marines', 'Army', 'Scout', 'Merchant', 'Other'].sample
+  def run_chargen
+    generate_characters
+    puts characters
   end
 
-  def min_terms?
-    terms >= term_constraints[0]
+  def generate_characters
+    number.times do
+      characters << Character.new(determine_service)
+    end
   end
 
-  def below_max_terms?
-    terms <= term_constraints[1]
+  def determine_service
+    @service ? service : draft
   end
 
+  def draft
+    Careers::SERVICES.sample
+  end
 end
 
-class ServiceBranch
+# A Traveller character
+class Character
   include Dice
+  include Careers
 
-  def initialize(verbose = false)
-    @verbose = verbose
+  attr_reader :name, :age, :stats, :service, :rank, :skills, :items, :terms,
+              :noble_index
+
+  def initialize(branch)
+    @service = branch
+    @terms = 0
+    @rank = 0
+    @name = 'Sam'
+    @stats = roll_stats
+    @noble_index = stats[:soc] - 10
+    @age = rand(12..18)
+    @skills = []
+    @items = []
+    @alive = true
   end
 
-  def new_term(stats, rank)
+  def to_s
+    "
+    #{soc_title}#{name}, Age: #{age} (#{to_uwp})
+    #{rank_title} #{service[:name]}, #{terms} terms
+    Skills: #{skills}
+    Inventory: #{items}
+    "
   end
 
-  def enlist?
+  def roll_stats
+    Hash[%i[str dex end int edu soc].zip(Dice.multiroll)]
   end
 
-  def survive?
+  def to_uwp
+    Dice.to_hex(stats.values)
   end
 
-  def comission?
+  def soc_title
+    "#{Careers::NOBILITY[noble_index].sample} " if noble_index.positive?
   end
 
-  def promotion?
-  end
-
-  def reenlist?
-  end
-
-  def skills?
-  end
-
-  def benefits?
+  def rank_title
+    if rank > service[:ranks].length
+      service[:ranks][-1]
+    else
+      service[:ranks][rank]
+    end
   end
 end
+
+CharGen.new({ number: 10 })
