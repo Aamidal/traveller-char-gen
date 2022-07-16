@@ -2,10 +2,8 @@
 
 # Data on Book 1 Careers
 module Careers
-  NOBILITY = [['', ''], %w[Sir Dame], %w[Baron Baroness], %w[Marquis Marchioness],
-              %w[Count Countess], %w[Duke Duchess]].freeze
   NAVY = {
-    enlistment: { dm: 8, int: 8, edu: 9 }, survival: { dm: 5, int: 7 },
+    enlistment: [8, { int: 8, edu: 9 }], survival: { dm: 5, int: 7 },
     commission: { dm: 10, soc: 9 }, promotion: { dm: 8, edu: 8 }, reenlist: 6,
     ranks: ['Spacer', 'Ensign', 'Lieutenant', 'Lt Cmdr', 'Commander', 'Captain',
             'Admiral'],

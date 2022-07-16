@@ -32,10 +32,12 @@ class CharGen
     puts characters
   end
 
+  def new_character
+    Character.new(determine_service)
+  end
+
   def generate_characters
-    number.times do
-      characters << Character.new(determine_service)
-    end
+    number.times { characters << new_character }
   end
 
   def determine_service
@@ -51,6 +53,9 @@ end
 class Character
   include Dice
   include Careers
+
+  NOBILITY = [['', ''], %w[Sir Dame], %w[Baron Baroness], %w[Marquis Marchioness],
+              %w[Count Countess], %w[Duke Duchess]].freeze
 
   attr_reader :name, :age, :stats, :service, :rank, :skills, :items, :terms,
               :noble_index
@@ -86,7 +91,7 @@ class Character
   end
 
   def soc_title
-    "#{Careers::NOBILITY[noble_index].sample} " if noble_index.positive?
+    "#{NOBILITY[noble_index].sample} " if noble_index.positive?
   end
 
   def rank_title
