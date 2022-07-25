@@ -1,0 +1,69 @@
+{
+  "name": "Scouts",
+  "enlistment": {
+    "dm": 7,
+    "int": 6,
+    "str": 8
+  },
+  "survival": {
+    "dm": 7,
+    "end": 9
+  },
+  "reenlist": 3,
+  "ranks": [
+    "Scout"
+  ],
+  "muster": [
+    [
+      "low psg",
+      "+2 INT",
+      "+2 EDU",
+      "blade",
+      "gun",
+      "scout ship"
+    ],
+    [
+      "20000",
+      "20000",
+      "30000",
+      "30000",
+      "50000",
+      "50000",
+      "50000"
+    ]
+  ],
+  "skills": [
+    [
+      "+1 STR",
+      "+1 DEX",
+      "+1 END",
+      "Gun Cbt",
+      "+1 INT",
+      "+1 EDU"
+    ],
+    [
+      "Air/Raft",
+      "Vacc Suit",
+      "Navigation",
+      "Mechanical",
+      "Electronic",
+      "J-o-T"
+    ],
+    [
+      "Air/Raft",
+      "Mechanical",
+      "Electronic",
+      "J-o-T",
+      "Gunnery",
+      "Medical"
+    ],
+    [
+      "Medical",
+      "Navigation",
+      "Engineering",
+      "Computer",
+      "Pilot",
+      "J-o-T"
+    ]
+  ]
+}

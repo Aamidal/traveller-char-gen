@@ -1,0 +1,83 @@
+{
+  "name": "Merchants",
+  "enlistment": {
+    "dm": 7,
+    "str": 7,
+    "int": 6
+  },
+  "survival": {
+    "dm": 5,
+    "int": 7
+  },
+  "commission": {
+    "dm": 4,
+    "int": 6
+  },
+  "promotion": {
+    "dm": 10,
+    "int": 9
+  },
+  "reenlist": 4,
+  "ranks": [
+    "Merchant",
+    "4th Officer",
+    "3rd Officer",
+    "2nd Officer",
+    "1st Officer",
+    "Captain"
+  ],
+  "muster": [
+    [
+      "low psg",
+      "+1 INT",
+      "+1 EDU",
+      "gun",
+      "blade",
+      "low psg",
+      "merchant ship"
+    ],
+    [
+      "1000",
+      "5000",
+      "10000",
+      "20000",
+      "20000",
+      "40000",
+      "40000"
+    ]
+  ],
+  "skills": [
+    [
+      "+1 STR",
+      "+1 DEX",
+      "+1 END",
+      "+1 STR",
+      "Blade Cbt",
+      "Bribery"
+    ],
+    [
+      "Steward",
+      "Vacc Suit",
+      "+1 STR",
+      "Gun Cbt",
+      "Electronic",
+      "J-o-T"
+    ],
+    [
+      "Streetwise",
+      "Mechanical",
+      "Electronic",
+      "Navigation",
+      "Gunnery",
+      "Medical"
+    ],
+    [
+      "Medical",
+      "Navigation",
+      "Engineering",
+      "Computer",
+      "Pilot",
+      "Admin"
+    ]
+  ]
+}

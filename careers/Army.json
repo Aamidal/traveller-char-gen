@@ -1,0 +1,84 @@
+{
+  "name": "Army",
+  "enlistment": {
+    "dm": 5,
+    "dex": 6,
+    "end": 5
+  },
+  "survival": {
+    "dm": 5,
+    "edu": 6
+  },
+  "commission": {
+    "dm": 5,
+    "end": 7
+  },
+  "promotion": {
+    "dm": 6,
+    "edu": 7
+  },
+  "reenlist": 7,
+  "ranks": [
+    "Soldier",
+    "Lieutenant",
+    "Captain",
+    "Major",
+    "Lt Colonel",
+    "Colonel",
+    "General"
+  ],
+  "muster": [
+    [
+      "low psg",
+      "+1 INT",
+      "+2 EDU",
+      "gun",
+      "high psg",
+      "mid psg",
+      "+1 SOC"
+    ],
+    [
+      "2000",
+      "5000",
+      "10000",
+      "10000",
+      "10000",
+      "20000",
+      "30000"
+    ]
+  ],
+  "skills": [
+    [
+      "+1 STR",
+      "+1 DEX",
+      "+1 END",
+      "Gambling",
+      "Brawling",
+      "+1 EDU"
+    ],
+    [
+      "ATV",
+      "Air/Raft",
+      "Fwd Obsv",
+      "Blade Cbt",
+      "Gun Cbt",
+      "Gun Cbt"
+    ],
+    [
+      "ATV",
+      "Mechanical",
+      "Electronic",
+      "Tactics",
+      "Blade Cbt",
+      "Gun Cbt"
+    ],
+    [
+      "Medical",
+      "Tactics",
+      "Tactics",
+      "Computer",
+      "Leader",
+      "Admin"
+    ]
+  ]
+}
