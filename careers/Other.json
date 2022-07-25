@@ -34,7 +34,7 @@
       "+1 STR",
       "+1 DEX",
       "+1 END",
-      "Blade Cbt",
+      "Blade Combat",
       "Brawling",
       "-1 SOC"
     ],
@@ -42,8 +42,8 @@
       "Forgery",
       "Gambling",
       "Brawling",
-      "Blade Cbt",
-      "Gun Cbt",
+      "Blade Combat",
+      "Gun Combat",
       "Bribery"
     ],
     [
@@ -60,7 +60,7 @@
       "Electronics",
       "Computer",
       "Streetwise",
-      "J-o-T"
+      "Jack-of-all-Trades"
     ]
   ]
 }

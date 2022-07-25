@@ -5,7 +5,7 @@ require 'json'
 # Data on Book 1 Careers
 NAVY = {
   name: 'Navy',
-  enlistment: [8, { int: 8, edu: 9 }],
+  enlistment: { dm: 8, bonus: { int: 8, edu: 9 } },
   survival: { dm: 5, int: 7 },
   commission: { dm: 10, soc: 9 },
   promotion: { dm: 8, edu: 8 },
@@ -26,7 +26,7 @@ NAVY = {
 
 MARINES = {
   name: 'Marines',
-  enlistment: { dm: 9, int: 8, str: 8 },
+  enlistment: { dm: 9, bonus: { int: 8, str: 8 } },
   survival: { dm: 6, end: 8 },
   commission: { dm: 9, edu: 7 },
   promotion: { dm: 9, soc: 8 },
@@ -47,7 +47,7 @@ MARINES = {
 
 ARMY = {
   name: 'Army',
-  enlistment: { dm: 5, dex: 6, end: 5 },
+  enlistment: { dm: 5, bonus: { dex: 6, end: 5 } },
   survival: { dm: 5, edu: 6 },
   commission: { dm: 5, end: 7 },
   promotion: { dm: 6, edu: 7 },
@@ -68,7 +68,7 @@ ARMY = {
 
 SCOUTS = {
   name: 'Scouts',
-  enlistment: { dm: 7, int: 6, str: 8 },
+  enlistment: { dm: 7, bonus: { int: 6, str: 8 } },
   survival: { dm: 7, end: 9 },
   reenlist: 3,
   ranks: ['Scout'],
@@ -86,7 +86,7 @@ SCOUTS = {
 
 MERCHANTS = {
   name: 'Merchants',
-  enlistment: { dm: 7, str: 7, int: 6 },
+  enlistment: { dm: 7, bonus: { str: 7, int: 6 } },
   survival: { dm: 5, int: 7 },
   commission: { dm: 4, int: 6 },
   promotion: { dm: 10, int: 9 },
@@ -123,6 +123,12 @@ OTHER = {
 
 SERVICES = [NAVY, MARINES, ARMY, SCOUTS, MERCHANTS, OTHER].freeze
 
-SERVICES.each do |svc|
-  File.open("careers/#{svc[:name]}.json", 'w') { |f| f.write(JSON.pretty_generate(svc)) }
+def generate_default_careers
+  SERVICES.each do |svc|
+    add_new_career(svc)
+  end
+end
+
+def add_new_career(career)
+  File.open("careers/#{career[:name]}.json", 'w') { |f| f.write(JSON.pretty_generate(career)) }
 end

@@ -37,7 +37,7 @@
       "+1 STR",
       "+1 DEX",
       "+1 END",
-      "Gun Cbt",
+      "Gun Combat",
       "+1 INT",
       "+1 EDU"
     ],
@@ -47,13 +47,13 @@
       "Navigation",
       "Mechanical",
       "Electronic",
-      "J-o-T"
+      "Jack-of-all-Trades"
     ],
     [
       "Air/Raft",
       "Mechanical",
       "Electronic",
-      "J-o-T",
+      "Jack-of-all-Trades",
       "Gunnery",
       "Medical"
     ],
@@ -63,7 +63,7 @@
       "Engineering",
       "Computer",
       "Pilot",
-      "J-o-T"
+      "Jack-of-all-Trades"
     ]
   ]
 }
