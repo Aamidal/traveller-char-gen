@@ -1,6 +1,6 @@
-# frozen-string-literals: false
+# frozen-string-literal: false
 
-require_relative 'travtools'
+require_relative 'trav_tools'
 
 # A Traveller Character
 class Character
@@ -23,11 +23,11 @@ class Character
   end
 
   def defaults
-    { gender: TravTools.random_gender,
+    { gender: rand_gender,
       name: false,
-      attributes: TravTools.roll_stats,
+      attributes: generate_stats,
       age: rand(12..18),
-      career: false }
+      career: random_career }
   end
 
   def generate_name(name)
@@ -39,6 +39,18 @@ class Character
     end
   end
 
+  def generate_stats
+    TravTools.roll_stats
+  end
+
+  def rand_gender
+    TravTools.random_gender
+  end
+
+  def noble_rank(soc, gender)
+    TravTools.soc_title(soc, gender)
+  end
+
   def to_s
     "
     Gender #{@gender}
@@ -46,10 +58,6 @@ class Character
     Age: #{@age}
     Attributes #{TravTools.to_hex(@attributes)}
     "
-  end
-
-  def noble_rank(soc, gender)
-    TravTools.soc_title(soc, gender)
   end
 
   def add_skill(skill)
@@ -104,6 +112,11 @@ class Character
   end
 end
 
-10.times do
-  puts Character.new
+char_test = Character.new
+
+puts char_test
+
+8.times do
+  char_test.increase_age(4)
+  puts char_test
 end
