@@ -6,37 +6,24 @@ require_relative 'trav_tools'
 class Character
   include TravTools
 
-  attr_reader :name, :attributes, :age, :career, :title, :skills, :inventory,
-              :service_history, :gender
+  attr_reader :name, :attributes, :age, :skills, :inventory, :service_history,
+              :gender, :deceased, :commissioned, :retired
 
-  def initialize(args = {})
-    args = defaults.merge(args)
-    @gender = args[:gender]
-    @name = generate_name(args[:name])
-    @attributes = args[:attributes]
-    @age = args[:age]
-    @career = args[:career]
-    @title = noble_rank(attributes[:soc], @gender)
+  def initialize(name = nil, gender = rand_gender)
+    @gender = gender
+    @name = generate_name(name)
+    @attributes = generate_stats
+    @age = rand(12..18)
     @skills = {}
     @inventory = { money: 0, items: [], ship: '' }
     @service_history = []
-  end
-
-  def defaults
-    { gender: rand_gender,
-      name: false,
-      attributes: generate_stats,
-      age: rand(12..18),
-      career: random_career }
+    @deceased = false
+    @commissioned = false
+    @retired = false
   end
 
   def generate_name(name)
-    case name
-    when false
-      TravTools.random_name(gender)
-    else
-      @name = name
-    end
+    name.nil? ? TravTools.random_name(gender) : name
   end
 
   def generate_stats
@@ -47,29 +34,34 @@ class Character
     TravTools.random_gender
   end
 
-  def noble_rank(soc, gender)
-    TravTools.soc_title(soc, gender)
+  def noble_rank
+    TravTools.soc_title(attributes[:soc], @gender)
   end
 
   def to_s
     "
-    Gender #{@gender}
-    Name #{@title}#{@name}
-    Age: #{@age}
-    Attributes #{TravTools.to_hex(@attributes)}
+    Name #{noble_rank}#{name}
+    Age: #{age}
+    Attributes #{TravTools.to_hex(attributes)}
+    Skills: #{print_skills}
+    Cr#{inventory[:money]}
+    Items: #{inventory[:items].join(',')}
+    Ship: #{inventory[:ship]}
+    Service History:
+    #{service_history.join("\n")}
     "
   end
 
   def add_skill(skill)
-    if @skills.key?(skill)
-      @skills[skill] += 1
-    else
-      @skills[skill] = 1
-    end
+    @skills.key?(skill) ? @skills[skill] += 1 : @skills[skill] = 1
   end
 
-  def add_item(item)
-    @inventory[:items].push(item)
+  def print_skills
+    skills.map { |k, v| "#{k}-#{v}" }.sort.join(', ')
+  end
+
+  def add_item(*items)
+    items.each { |item| @inventory[:items].push(item) }
   end
 
   def add_money(amount)
@@ -109,14 +101,55 @@ class Character
 
   def aging_throw(stat, penalty, difficulty)
     modify_attribute(stat, penalty) unless TravTools.check(difficulty)
+    aging_crisis?(stat)
+  end
+
+  def aging_crisis?(stat)
+    return if attributes[stat].positive? || deceased
+
+    if TravTools.throw(8)
+      @attributes[stat] = 1
+      @service_history.push "Recovered from a serious illness (#{stat.to_s.upcase} healed from 0)"
+    else
+      @attributes[stat] = 0
+      @deceased = true
+      @service_history.push('Died of Old Age.')
+    end
   end
 end
 
-char_test = Character.new
-
-puts char_test
-
-8.times do
-  char_test.increase_age(4)
-  puts char_test
+def multi_test
+  10.times do
+    puts Character.new
+  end
 end
+
+def age_test
+  char = Character.new
+  puts char
+  char.add_item('Sword')
+  char.add_money(1000)
+  char.add_ship('Type-S Scout')
+  char.add_skill('Sword')
+  until char.deceased
+    char.increase_age(4)
+    puts char
+  end
+end
+
+def skill_test(*args)
+  char = Character.new
+  args.each do |arg|
+    break if char.deceased
+
+    char.add_skill(arg)
+    char.increase_age(8)
+    puts char
+  end
+end
+
+multi_test
+
+age_test
+
+skill_test('Blade Combat', 'Gun Combat', 'Pilot', 'Pilot', 'Medic', 'Gambling')
